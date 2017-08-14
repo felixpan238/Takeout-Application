@@ -46,8 +46,20 @@ public class Customer {
 
     // Basic constructor populating all values
     public Customer (int id, String firstName, String lastName, String phone, String email, String street, String city,
-                     String province, String postalCode){
+                          String province, String postalCode){
         this.setId(id);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setPhone(phone);
+        this.setEmail(email);
+        this.setStreet(street);
+        this.setCity(city);
+        this.setProvince(province);
+        this.setPostalCode(postalCode);
+    }
+
+    public Customer (String firstName, String lastName, String phone, String email, String street, String city,
+                     String province, String postalCode){
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setPhone(phone);

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Entity
 public class MenuItem {
@@ -92,7 +93,7 @@ public class MenuItem {
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return price.setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public void setPrice(BigDecimal price) {
