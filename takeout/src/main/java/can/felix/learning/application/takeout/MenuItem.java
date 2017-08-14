@@ -49,10 +49,6 @@ public class MenuItem {
         this.setPrice(price);
     }
 
-    public String toInsertQuery(){
-        return ("INSERT INTO menu_items VALUES(null,'" + this.getDisplayName() + "','" + this.getCategory() + "','" + this.getDescription() + "','"+ this.getPrice() + "');");
-    }
-
     @Override
     public String toString() {
         return " ID: " + this.getId() +

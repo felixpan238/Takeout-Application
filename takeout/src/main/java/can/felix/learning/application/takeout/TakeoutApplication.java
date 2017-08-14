@@ -19,8 +19,8 @@ public class TakeoutApplication {
             dao.connectToDatabase();
 
             // Inserts a new menu item into database
-//            MenuItem poutine = new MenuItem("Poutine", MenuItem.MenuCategory.APPETIZER, "Poutine description.", new BigDecimal(1.99));
-//            dao.updateSQLStatement(poutine.toInsertQuery());
+            MenuItem poutine = new MenuItem("Poutine", MenuItem.MenuCategory.APPETIZER, "Poutine description.", new BigDecimal(1.99));
+            dao.updateSQLStatement(menuItemService.getInsertQuery(poutine));
 
             // Select in prints full table of menu items
             ResultSet resultSet = dao.querySQLStatement(menuItemService.getSelectAllMenuItemsQueryStatement());

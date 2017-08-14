@@ -5,6 +5,10 @@ import java.sql.SQLException;
 
 public class MenuItemServiceImpl implements MenuItemService {
 
+    public String getInsertQuery(MenuItem menuItem){
+        return ("INSERT INTO menu_items VALUES(null,'" + menuItem.getDisplayName() + "','" + menuItem.getCategory() + "','" + menuItem.getDescription() + "','"+ menuItem.getPrice() + "');");
+    }
+
     public String getSelectAllMenuItemsQueryStatement(){
         return ("SELECT * FROM menu_items;");
     }
