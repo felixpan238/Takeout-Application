@@ -1,7 +1,7 @@
 
 -- INSERT test values into menu_items
-INSERT INTO menu_items VALUES(NULL, 'Nachos', 'APPITIZER', 'Some text.', 3.99);
-INSERT INTO menu_items VALUES(NULL, 'Ceasar Salad', 'APPITIZER', 'Some text.', 2.99);
+INSERT INTO menu_items VALUES(NULL, 'Nachos', 'APPETIZER', 'Some text.', 3.99);
+INSERT INTO menu_items VALUES(NULL, 'Ceasar Salad', 'APPETIZER', 'Some text.', 2.99);
 INSERT INTO menu_items VALUES(NULL, 'Hot Dog', 'MAIN', 'Some text.', 2.50);
 INSERT INTO menu_items VALUES(NULL, 'Cheese Burger', 'MAIN', 'Some text.', 2.99);
 INSERT INTO menu_items VALUES(NULL, 'Personal Pizza', 'MAIN', 'Some text.', 4.99);

@@ -7,7 +7,7 @@ USE takeout_database;
 CREATE TABLE menu_items(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	display_name VARCHAR(30) NOT NULL,
-	category ENUM('APPITIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK') NOT NULL,
+	category ENUM('APPETIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK') NOT NULL,
 	description VARCHAR(150),
 	price FLOAT(4,2) NOT NULL,
 	PRIMARY KEY(id)
