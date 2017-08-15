@@ -8,10 +8,6 @@ import java.util.List;
 
 @Service
 public interface MenuItemService {
-    public String getInsertStatement(MenuItem menuItem);
-    public String getUpdateStatement(MenuItem menuItem);
-    public String getDeleteStatement(int id);
-    public String getSelectAllMenuItemsQueryStatement();
     public List<MenuItem> getAllMenuItems();
     public MenuItem getMenuItemById(String id);
     public void insertMenuItem(MenuItem menuItem);

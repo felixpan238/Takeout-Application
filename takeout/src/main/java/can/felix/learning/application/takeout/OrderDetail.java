@@ -17,9 +17,20 @@ public class OrderDetail {
     @Column(name = "menu_item_id", nullable = false)
     private int menuItemId;
 
+
+    // Default constructor
+    public OrderDetail (){
+
+    }
+
     // Basic constructor populating all values
     public OrderDetail(int id, int orderId, int menuItemId) {
         this.setId(id);
+        this.setOrderId(orderId);
+        this.setMenuItemId(menuItemId);
+    }
+    // Constructor populating all values without id
+    public OrderDetail(int orderId, int menuItemId) {
         this.setOrderId(orderId);
         this.setMenuItemId(menuItemId);
     }

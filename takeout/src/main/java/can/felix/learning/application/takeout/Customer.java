@@ -44,6 +44,11 @@ public class Customer {
     @Column(name = "postal_code", nullable = false)
     private String postalCode;
 
+    // Default constructor
+    public Customer(){
+
+    }
+
     // Basic constructor populating all values
     public Customer (int id, String firstName, String lastName, String phone, String email, String street, String city,
                           String province, String postalCode){

@@ -3,7 +3,8 @@ package can.felix.learning.application.takeout;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class Order {
     private int customerId;
 
     @Column(name = "date_time", nullable = false)
-    private Date dateTime;
+    private Timestamp dateTime;
 
     @Column(name = "paid_status", nullable = false)
     private boolean paidStatus;
@@ -25,8 +26,13 @@ public class Order {
     @Column(name = "pickup_status", nullable = false)
     private boolean pickupStatus;
 
+    // Default constructor
+    public Order (){
+
+    }
+
     // Basic constructor populating all values
-    public Order (int id, int customerId, Date dateTime, boolean paidStatus, boolean pickupStatus){
+    public Order (int id, int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
         this.setId(id);
         this.setCustomerId(customerId);
         this.setDateTime(dateTime);
@@ -36,6 +42,7 @@ public class Order {
 
     @Override
     public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return " ID: " + this.getId() +
                 " | Customer ID: " + this.getCustomerId() +
                 " | Date/Time: " + this.getDateTime() +
@@ -64,7 +71,7 @@ public class Order {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 
