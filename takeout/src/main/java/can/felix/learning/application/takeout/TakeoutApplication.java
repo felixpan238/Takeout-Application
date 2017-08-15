@@ -1,5 +1,6 @@
 package can.felix.learning.application.takeout;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -11,28 +12,15 @@ import java.sql.ResultSet;
 public class TakeoutApplication {
 
 	public static void main(String[] args) {
-		// Connects to mySQL database
-		MySQLAccess dao = new MySQLAccess();
-        MenuItemService menuItemService = new MenuItemServiceImpl();
-        CustomerService customerService = new CustomerServiceImpl();
+        SpringApplication.run(TakeoutApplication.class, args);
 
-        try {
-            dao.connectToDatabase();
-
-            // Inserts a new menu item into database
-//            MenuItem poutine = new MenuItem("Poutine", MenuItem.MenuCategory.APPETIZER, "Poutine description.", new BigDecimal(1.99));
-//            dao.updateSQLStatement(menuItemService.getInsertStatement(poutine));
-
-            // Update a menu item in the database
-//            MenuItem Nachos = new MenuItem(1, "New Nachos", MenuItem.MenuCategory.APPETIZER, "New nachos description.", new BigDecimal(5.99));
-//            dao.updateSQLStatement(menuItemService.getUpdateStatement(Nachos));
-
-            // Delete a menu item from the database
-//            dao.updateSQLStatement(menuItemService.getDeleteStatement(16));
-
-            // Select in prints full table of menu items
-//            ResultSet resultSet = dao.querySQLStatement(menuItemService.getSelectAllMenuItemsQueryStatement());
-//            menuItemService.printAllMenuItemsFromResultSet(resultSet);
+        // Connects to mySQL database
+//		MySQLAccess dao = new MySQLAccess();
+//        MenuItemService menuItemService = new MenuItemServiceImpl();
+//        CustomerService customerService = new CustomerServiceImpl();
+//
+//        try {
+//            dao.connectToDatabase();
 
             // Inserts a new customer into database
 //            Customer fred = new Customer("Fred", "Fedder", "1234567890", "fred@email.com", "123 Freds St", "North York", "ON", "A1B2C3");
@@ -49,16 +37,16 @@ public class TakeoutApplication {
 //            ResultSet resultSet = dao.querySQLStatement(customerService.getSelectAllMenuItemsQueryStatement());
 //            customerService.printAllMenuItemsFromResultSet(resultSet);
 
-        }catch (Exception e) {
-            // do nothing
-        }finally {
-            try {
-                dao.closeConnectionToDatabase();
-            } catch (Exception e) {
-                // do nothing
-            }
-
-        }
+//        }catch (Exception e) {
+//            // do nothing
+//        }finally {
+//            try {
+//                dao.closeConnectionToDatabase();
+//            } catch (Exception e) {
+//                // do nothing
+//            }
+//
+//        }
 
 	}
 }

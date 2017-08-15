@@ -9,7 +9,7 @@ CREATE TABLE menu_items(
 	display_name VARCHAR(30) NOT NULL,
 	category ENUM('APPETIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK') NOT NULL,
 	description VARCHAR(150),
-	price FLOAT(4,2) NOT NULL,
+	price FLOAT(6,2) NOT NULL,
 	PRIMARY KEY(id)
 );
 

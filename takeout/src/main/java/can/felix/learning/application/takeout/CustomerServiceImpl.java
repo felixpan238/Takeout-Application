@@ -2,6 +2,8 @@ package can.felix.learning.application.takeout;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
 
@@ -33,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
         return ("SELECT * FROM customers;");
     }
 
-    public void printAllMenuItemsFromResultSet(ResultSet resultSet)throws SQLException {
+    public void printAllCustomersFromResultSet(ResultSet resultSet)throws SQLException {
         while (resultSet.next()) {
             System.out.println(
                     " ID: " + resultSet.getString("id") +
@@ -48,4 +50,5 @@ public class CustomerServiceImpl implements CustomerService {
             );
         }
     }
+
 }

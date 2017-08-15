@@ -33,6 +33,10 @@ public class MenuItem {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
+    // Default constructor
+    public MenuItem (){
+    }
+
     // Basic constructor populating all values
     public MenuItem (int id, String displayName, MenuCategory category, String description, BigDecimal price){
         this.setId(id);
