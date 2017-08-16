@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "orders")
 public class Order {
-    // Variables for an order
+    // -Variables for an order -----------------------------------------------------------------------------------------
     @Id
     @Column(name = "id", nullable = false)
     private int id;
@@ -29,12 +29,9 @@ public class Order {
     @Column(name = "pickup_status", nullable = false)
     private boolean pickupStatus;
 
-    // Default constructor
-    public Order (){
+    // -Constructors ---------------------------------------------------------------------------------------------------
+    public Order (){}
 
-    }
-
-    // Basic constructor populating all values
     public Order (int id, int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
         this.setId(id);
         this.setCustomerId(customerId);
@@ -43,7 +40,6 @@ public class Order {
         this.setPickupStatus(pickupStatus);
     }
 
-    // Basic constructor populating all values
     public Order (int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
         this.setCustomerId(customerId);
         this.setDateTime(dateTime);
@@ -51,6 +47,7 @@ public class Order {
         this.setPickupStatus(pickupStatus);
     }
 
+    // -Override toString method ---------------------------------------------------------------------------------------
     @Override
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -61,7 +58,7 @@ public class Order {
                 " | Pickup Status: " + this.isPickupStatus();
     }
 
-    // Getters and Setters for variables
+    // -Getters and Setters for variables ------------------------------------------------------------------------------
     public int getId() {
         return this.id;
     }

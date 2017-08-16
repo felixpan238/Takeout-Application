@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "customers")
 public class Customer {
-    // Variables for customer
+    // -Variables for customers ----------------------------------------------------------------------------------------
     @Id
     @Column(name = "id", nullable = false)
     private int id;
@@ -46,12 +46,9 @@ public class Customer {
     @Column(name = "postal_code", nullable = false)
     private String postalCode;
 
-    // Default constructor
-    public Customer(){
+    // -Constructors ---------------------------------------------------------------------------------------------------
+    public Customer(){}
 
-    }
-
-    // Basic constructor populating all values
     public Customer (int id, String firstName, String lastName, String phone, String email, String street, String city,
                           String province, String postalCode){
         this.setId(id);
@@ -77,6 +74,7 @@ public class Customer {
         this.setPostalCode(postalCode);
     }
 
+    // -Override toString method ---------------------------------------------------------------------------------------
     @Override
     public String toString() {
         return " ID: " + this.getId() +
@@ -90,7 +88,7 @@ public class Customer {
                 " " + this.getPostalCode();
     }
 
-    // Getters and Setters for variables
+    // -Getters and Setters for variables ------------------------------------------------------------------------------
     public int getId() {
         return this.id;
     }

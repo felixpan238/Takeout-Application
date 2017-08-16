@@ -9,11 +9,12 @@ import java.math.RoundingMode;
 @Entity
 @Table(name = "menu_items")
 public class MenuItem {
-    // ENUM for menuitem categories
+    // -ENUM for menuItems categories ----------------------------------------------------------------------------------
     public enum MenuCategory {
         APPETIZER, MAIN, SIDE, DESSERT, DRINK
     }
-    // Variables for menuitem
+
+    // -Variables for menuitem -----------------------------------------------------------------------------------------
     @Id
     @Column(name = "id", nullable = false)
     private int id;
@@ -23,7 +24,8 @@ public class MenuItem {
     private String displayName;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "category", nullable = false, columnDefinition = "ENUM('APPETIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK')")
+    @Column(name = "category", nullable = false,
+            columnDefinition = "ENUM('APPETIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK')")
     private MenuCategory category;
 
     @Size(max = 150)
@@ -34,11 +36,9 @@ public class MenuItem {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    // Default constructor
-    public MenuItem (){
-    }
+    // -Constructor ----------------------------------------------------------------------------------------------------
+    public MenuItem (){}
 
-    // Basic constructor populating all values
     public MenuItem (int id, String displayName, MenuCategory category, String description, BigDecimal price){
         this.setId(id);
         this.setDisplayName(displayName);
@@ -47,7 +47,6 @@ public class MenuItem {
         this.setPrice(price);
     }
 
-    // Basic constructor with no given id
     public MenuItem (String displayName, MenuCategory category, String description, BigDecimal price){
         this.setDisplayName(displayName);
         this.setCategory(category);
@@ -55,6 +54,7 @@ public class MenuItem {
         this.setPrice(price);
     }
 
+    // -Override toString method ---------------------------------------------------------------------------------------
     @Override
     public String toString() {
         return " ID: " + this.getId() +
@@ -64,7 +64,7 @@ public class MenuItem {
                 " | Price: $" + this.getPrice();
     }
 
-    // Getters and Setters for variables
+    // -Getters and Setters for variables  -----------------------------------------------------------------------------
     public int getId() {
         return this.id;
     }

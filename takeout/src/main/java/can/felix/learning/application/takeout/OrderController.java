@@ -2,7 +2,6 @@ package can.felix.learning.application.takeout;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

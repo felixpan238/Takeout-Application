@@ -2,7 +2,6 @@ package can.felix.learning.application.takeout;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
