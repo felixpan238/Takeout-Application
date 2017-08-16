@@ -3,11 +3,13 @@ package can.felix.learning.application.takeout;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
-    // Variables for menuitem
+    // Variables for customer
     @Id
     @Column(name = "id", nullable = false)
     private int id;

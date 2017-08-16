@@ -7,7 +7,7 @@ import java.util.List;
 @Service
 public interface OrderDetailService {
     public List<OrderDetail> getAllOrderDetails();
-    public OrderDetail getOrderDetailById(String id);
+    public OrderDetail getOrderDetailById(int id);
     public void insertOrderDetail(OrderDetail orderDetail);
     public void updateOrderDetail(OrderDetail orderDetail);
     public void deleteOrderDetail(int id);

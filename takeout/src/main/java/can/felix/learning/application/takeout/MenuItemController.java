@@ -16,7 +16,7 @@ import java.util.List;
     }
 
     @RequestMapping("/menu/{id}")
-    public MenuItem getMenuItem(@PathVariable String id) {
+    public MenuItem getMenuItem(@PathVariable int id) {
         return menuItemService.getMenuItemById(id);
     }
 

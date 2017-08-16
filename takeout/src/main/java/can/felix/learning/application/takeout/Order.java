@@ -1,20 +1,21 @@
 package can.felix.learning.application.takeout;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
+@Table(name = "orders")
 public class Order {
     // Variables for an order
     @Id
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "customer_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id",referencedColumnName="id", nullable = false)
+//    @Column(name = "customer_id", nullable = false)
     private int customerId;
 
     @Column(name = "date_time", nullable = false)

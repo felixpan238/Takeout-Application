@@ -1,13 +1,13 @@
 package can.felix.learning.application.takeout;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Entity
+@Table(name = "menu_items")
 public class MenuItem {
     // ENUM for menuitem categories
     public enum MenuCategory {
@@ -22,14 +22,15 @@ public class MenuItem {
     @Column(name = "display_name", nullable = false)
     private String displayName;
 
-    @Column(name = "category", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", nullable = false, columnDefinition = "ENUM('APPETIZER', 'MAIN', 'SIDE', 'DESSERT', 'DRINK')")
     private MenuCategory category;
 
     @Size(max = 150)
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Size(max = 6)
+    @Digits(integer=6, fraction=2)
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 

@@ -17,7 +17,7 @@ public class OrderDetailController {
     }
 
     @RequestMapping("/orderdetail/{id}")
-    public OrderDetail getOrderDetail(@PathVariable String id) {
+    public OrderDetail getOrderDetail(@PathVariable int id) {
         return orderDetailService.getOrderDetailById(id);
     }
 

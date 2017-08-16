@@ -17,7 +17,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/customer/{id}")
-    public Customer getCustomer(@PathVariable String id) {
+    public Customer getCustomer(@PathVariable int id) {
         return customerService.getCustomerById(id);
     }
 

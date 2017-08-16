@@ -1,19 +1,22 @@
 package can.felix.learning.application.takeout;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "order_details")
 public class OrderDetail {
     // Variables for an OrderDetail
     @Id
     @Column(name = "id", nullable = false)
     private int id;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "order_id",referencedColumnName="id", nullable = false)
     @Column(name = "order_id", nullable = false)
     private int orderId;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "menu_item_id", referencedColumnName="id", nullable = false)
     @Column(name = "menu_item_id", nullable = false)
     private int menuItemId;
 
