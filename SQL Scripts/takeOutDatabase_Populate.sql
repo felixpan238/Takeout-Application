@@ -29,9 +29,9 @@ INSERT INTO orders VALUES(NULL, 4, '2017-08-11 06:35:00', FALSE, FALSE);
 INSERT INTO orders VALUES(NULL, 5, '2017-08-11 07:35:00', FALSE, FALSE);
 
 -- INSERT test values into orders
-INSERT INTO ordered_details VALUES(NULL, 1, 3);
-INSERT INTO ordered_details VALUES(NULL, 1, 6);
-INSERT INTO ordered_details VALUES(NULL, 2, 4);
-INSERT INTO ordered_details VALUES(NULL, 3, 2);
-INSERT INTO ordered_details VALUES(NULL, 4, 6);
-INSERT INTO ordered_details VALUES(NULL, 5, 7);
+INSERT INTO order_details VALUES(NULL, 1, 3);
+INSERT INTO order_details VALUES(NULL, 1, 6);
+INSERT INTO order_details VALUES(NULL, 2, 4);
+INSERT INTO order_details VALUES(NULL, 3, 2);
+INSERT INTO order_details VALUES(NULL, 4, 6);
+INSERT INTO order_details VALUES(NULL, 5, 7);

@@ -13,9 +13,11 @@ public class Order {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id",referencedColumnName="id", nullable = false)
-//    @Column(name = "customer_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "customer_id",referencedColumnName="id", nullable = false, insertable = false, updatable = false)
+    private Customer customer;
+
+    @Column(name = "customer_id", nullable = false)
     private int customerId;
 
     @Column(name = "date_time", nullable = false)
@@ -41,6 +43,14 @@ public class Order {
         this.setPickupStatus(pickupStatus);
     }
 
+    // Basic constructor populating all values
+    public Order (int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
+        this.setCustomerId(customerId);
+        this.setDateTime(dateTime);
+        this.setPaidStatus(paidStatus);
+        this.setPickupStatus(pickupStatus);
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -53,15 +63,23 @@ public class Order {
 
     // Getters and Setters for variables
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public Customer getCustomer() {
+        return this.customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public int getCustomerId() {
-        return customerId;
+        return this.customerId;
     }
 
     public void setCustomerId(int customerId) {
@@ -69,7 +87,7 @@ public class Order {
     }
 
     public Date getDateTime() {
-        return dateTime;
+        return this.dateTime;
     }
 
     public void setDateTime(Timestamp dateTime) {

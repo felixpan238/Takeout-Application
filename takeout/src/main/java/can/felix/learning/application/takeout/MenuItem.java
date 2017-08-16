@@ -66,7 +66,7 @@ public class MenuItem {
 
     // Getters and Setters for variables
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -74,7 +74,7 @@ public class MenuItem {
     }
 
     public String getDisplayName() {
-        return displayName;
+        return this.displayName;
     }
 
     public void setDisplayName(String displayName) {
@@ -98,7 +98,7 @@ public class MenuItem {
     }
 
     public BigDecimal getPrice() {
-        return price.setScale(2, RoundingMode.HALF_EVEN);
+        return this.price.setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public void setPrice(BigDecimal price) {

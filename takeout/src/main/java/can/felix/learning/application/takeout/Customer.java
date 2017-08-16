@@ -92,7 +92,7 @@ public class Customer {
 
     // Getters and Setters for variables
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -100,7 +100,7 @@ public class Customer {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -108,7 +108,7 @@ public class Customer {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -116,7 +116,7 @@ public class Customer {
     }
 
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
 
     public void setPhone(String phone) {
@@ -124,7 +124,7 @@ public class Customer {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -132,7 +132,7 @@ public class Customer {
     }
 
     public String getStreet() {
-        return street;
+        return this.street;
     }
 
     public void setStreet(String street) {
@@ -140,7 +140,7 @@ public class Customer {
     }
 
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     public void setCity(String city) {
@@ -148,7 +148,7 @@ public class Customer {
     }
 
     public String getProvince() {
-        return province;
+        return this.province;
     }
 
     public void setProvince(String province) {
@@ -156,7 +156,7 @@ public class Customer {
     }
 
     public String getPostalCode() {
-        return postalCode;
+        return this.postalCode;
     }
 
     public void setPostalCode(String postalCode) {

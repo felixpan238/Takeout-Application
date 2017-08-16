@@ -10,16 +10,20 @@ public class OrderDetail {
     @Column(name = "id", nullable = false)
     private int id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "order_id",referencedColumnName="id", nullable = false)
+
+    @ManyToOne
+    @JoinColumn(name = "order_id",referencedColumnName="id", nullable = false, insertable=false, updatable= false)
+    private Order order;
+
     @Column(name = "order_id", nullable = false)
     private int orderId;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "menu_item_id", referencedColumnName="id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "menu_item_id",referencedColumnName="id", nullable = false, insertable=false, updatable= false)
+    private MenuItem menuItem;
+
     @Column(name = "menu_item_id", nullable = false)
     private int menuItemId;
-
 
     // Default constructor
     public OrderDetail (){
@@ -32,7 +36,8 @@ public class OrderDetail {
         this.setOrderId(orderId);
         this.setMenuItemId(menuItemId);
     }
-    // Constructor populating all values without id
+
+    // Basic constructor populating all values
     public OrderDetail(int orderId, int menuItemId) {
         this.setOrderId(orderId);
         this.setMenuItemId(menuItemId);
@@ -47,7 +52,7 @@ public class OrderDetail {
 
     // Getters and Setters for variables
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -55,7 +60,7 @@ public class OrderDetail {
     }
 
     public int getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
     public void setOrderId(int orderId) {
@@ -63,10 +68,26 @@ public class OrderDetail {
     }
 
     public int getMenuItemId() {
-        return menuItemId;
+        return this.menuItemId;
     }
 
     public void setMenuItemId(int menuItemId) {
         this.menuItemId = menuItemId;
+    }
+
+    public Order getOrder() {
+        return this.order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public MenuItem getMenuItem() {
+        return this.menuItem;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 }
