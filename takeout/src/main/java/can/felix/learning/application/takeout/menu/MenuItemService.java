@@ -1,9 +1,7 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.menu;
 
-import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Service
 public interface MenuItemService{
 
     public List<MenuItem> getAllMenuItems();

@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.orderdetails;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

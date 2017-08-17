@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +10,19 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/customer/full")
+    @RequestMapping(method= RequestMethod.GET, value = "/customer/full")
     public List<Customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
-    @RequestMapping("/customer/{id}")
-    public Customer getCustomer(@PathVariable int id) {
-        return customerService.getCustomerById(id);
+    @RequestMapping(method= RequestMethod.GET, value = "/customer/{id}")
+    public Customer findById(@PathVariable Long id) {
+        return customerService.findById(id);
+    }
+
+    @RequestMapping(method= RequestMethod.GET, value = "/customer/search/{name}")
+    public List<Customer> findByFirstName(@PathVariable String name) {
+        return customerService.findByFirstName(name);
     }
 
     @RequestMapping(method= RequestMethod.POST, value="/customer")

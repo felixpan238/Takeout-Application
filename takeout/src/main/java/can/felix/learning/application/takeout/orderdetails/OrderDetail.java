@@ -1,5 +1,8 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.orderdetails;
 
+import can.felix.learning.application.takeout.menu.MenuItem;
+import can.felix.learning.application.takeout.order.Order;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
@@ -11,40 +14,25 @@ public class OrderDetail {
     private int id;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JoinColumn(name = "order_id",referencedColumnName="id", nullable = false, insertable=false, updatable= false)
     private Order order;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "order_id", nullable = false)
     private int orderId;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JoinColumn(name = "menu_item_id",referencedColumnName="id", nullable = false, insertable=false, updatable= false)
     private MenuItem menuItem;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "menu_item_id", nullable = false)
     private int menuItemId;
 
     // -Constructors ---------------------------------------------------------------------------------------------------
     public OrderDetail (){}
-
-    public OrderDetail(int id, int orderId, int menuItemId) {
-        this.setId(id);
-        this.setOrderId(orderId);
-        this.setMenuItemId(menuItemId);
-    }
-
-    public OrderDetail(int orderId, int menuItemId) {
-        this.setOrderId(orderId);
-        this.setMenuItemId(menuItemId);
-    }
-
-    // -Override toString method ---------------------------------------------------------------------------------------
-    @Override
-    public String toString() {
-        return " ID: " + this.getId() +
-                " | Order ID: " + this.getOrderId() +
-                " | Menu Item Id: " + this.getMenuItemId();
-    }
 
     // -Getters and Setters for variables ------------------------------------------------------------------------------
     public int getId() {
@@ -85,5 +73,37 @@ public class OrderDetail {
 
     public void setMenuItemId(int menuItemId) {
         this.menuItemId = menuItemId;
+    }
+
+    // -Override default method ----------------------------------------------------------------------------------------
+    @Override
+    public String toString() {
+        return " ID: " + this.getId() +
+                " | Order ID: " + this.getOrderId() +
+                " | Menu Item Id: " + this.getMenuItemId();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderDetail that = (OrderDetail) o;
+
+        if (id != that.id) return false;
+        if (orderId != that.orderId) return false;
+        if (menuItemId != that.menuItemId) return false;
+        if (order != null ? !order.equals(that.order) : that.order != null) return false;
+        return menuItem != null ? menuItem.equals(that.menuItem) : that.menuItem == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (order != null ? order.hashCode() : 0);
+        result = 31 * result + orderId;
+        result = 31 * result + (menuItem != null ? menuItem.hashCode() : 0);
+        result = 31 * result + menuItemId;
+        return result;
     }
 }

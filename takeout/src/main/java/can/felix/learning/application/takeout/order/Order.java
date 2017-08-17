@@ -1,5 +1,7 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.order;
 
+import can.felix.learning.application.takeout.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -14,9 +16,11 @@ public class Order {
     private int id;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JoinColumn(name = "customer_id",referencedColumnName="id", nullable = false, insertable = false, updatable = false)
     private Customer customer;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "customer_id", nullable = false)
     private int customerId;
 
@@ -31,32 +35,6 @@ public class Order {
 
     // -Constructors ---------------------------------------------------------------------------------------------------
     public Order (){}
-
-    public Order (int id, int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
-        this.setId(id);
-        this.setCustomerId(customerId);
-        this.setDateTime(dateTime);
-        this.setPaidStatus(paidStatus);
-        this.setPickupStatus(pickupStatus);
-    }
-
-    public Order (int customerId, Timestamp dateTime, boolean paidStatus, boolean pickupStatus){
-        this.setCustomerId(customerId);
-        this.setDateTime(dateTime);
-        this.setPaidStatus(paidStatus);
-        this.setPickupStatus(pickupStatus);
-    }
-
-    // -Override toString method ---------------------------------------------------------------------------------------
-    @Override
-    public String toString() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return " ID: " + this.getId() +
-                " | Customer ID: " + this.getCustomerId() +
-                " | Date/Time: " + this.getDateTime() +
-                " | Paid Status: " + this.isPaidStatus() +
-                " | Pickup Status: " + this.isPickupStatus();
-    }
 
     // -Getters and Setters for variables ------------------------------------------------------------------------------
     public int getId() {
@@ -105,5 +83,42 @@ public class Order {
 
     public void setPickupStatus(boolean pickupStatus) {
         this.pickupStatus = pickupStatus;
+    }
+
+    // -Override default method ----------------------------------------------------------------------------------------
+    @Override
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return " ID: " + this.getId() +
+                " | Customer ID: " + this.getCustomerId() +
+                " | Date/Time: " + this.getDateTime() +
+                " | Paid Status: " + this.isPaidStatus() +
+                " | Pickup Status: " + this.isPickupStatus();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (id != order.id) return false;
+        if (customerId != order.customerId) return false;
+        if (paidStatus != order.paidStatus) return false;
+        if (pickupStatus != order.pickupStatus) return false;
+        if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
+        return dateTime != null ? dateTime.equals(order.dateTime) : order.dateTime == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + customerId;
+        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
+        result = 31 * result + (paidStatus ? 1 : 0);
+        result = 31 * result + (pickupStatus ? 1 : 0);
+        return result;
     }
 }

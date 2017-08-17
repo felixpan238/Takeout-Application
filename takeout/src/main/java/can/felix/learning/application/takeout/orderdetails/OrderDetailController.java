@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.orderdetails;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +10,12 @@ public class OrderDetailController {
     @Autowired
     private OrderDetailService orderDetailService;
 
-    @RequestMapping("/orderdetail/full")
+    @RequestMapping(method= RequestMethod.GET, value="/orderdetail/full")
     public List<OrderDetail> getAllOrderDetails() {
         return orderDetailService.getAllOrderDetails();
     }
 
-    @RequestMapping("/orderdetail/{id}")
+    @RequestMapping(method= RequestMethod.GET, value="/orderdetail/{id}")
     public OrderDetail getOrderDetail(@PathVariable int id) {
         return orderDetailService.getOrderDetailById(id);
     }

@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.menu;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,8 +76,6 @@ public class MenuItemServiceImpl implements MenuItemService {
         MenuItem menuItem;
         menuItem = menuItemRepository.findOne(id);
         return menuItem;
-
-
 
 //        MenuItem menuItem = null;
 //        MySQLAccess dao = new MySQLAccess();

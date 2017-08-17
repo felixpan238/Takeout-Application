@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.customer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,45 +48,6 @@ public class Customer {
 
     // -Constructors ---------------------------------------------------------------------------------------------------
     public Customer(){}
-
-    public Customer (int id, String firstName, String lastName, String phone, String email, String street, String city,
-                          String province, String postalCode){
-        this.setId(id);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPhone(phone);
-        this.setEmail(email);
-        this.setStreet(street);
-        this.setCity(city);
-        this.setProvince(province);
-        this.setPostalCode(postalCode);
-    }
-
-    public Customer (String firstName, String lastName, String phone, String email, String street, String city,
-                     String province, String postalCode){
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPhone(phone);
-        this.setEmail(email);
-        this.setStreet(street);
-        this.setCity(city);
-        this.setProvince(province);
-        this.setPostalCode(postalCode);
-    }
-
-    // -Override toString method ---------------------------------------------------------------------------------------
-    @Override
-    public String toString() {
-        return " ID: " + this.getId() +
-                " | Name: " + this.getFirstName() +
-                " " + this.getLastName() +
-                " | Phone # : " + this.getPhone() +
-                " | Email : " + this.getEmail() +
-                " | Address : " + this.getStreet() +
-                " " + this.getCity() +
-                " " + this.getProvince() +
-                " " + this.getPostalCode();
-    }
 
     // -Getters and Setters for variables ------------------------------------------------------------------------------
     public int getId() {
@@ -159,5 +120,51 @@ public class Customer {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    // -Override default method ----------------------------------------------------------------------------------------
+    @Override
+    public String toString() {
+        return " ID: " + this.getId() +
+                " | Name: " + this.getFirstName() +
+                " " + this.getLastName() +
+                " | Phone # : " + this.getPhone() +
+                " | Email : " + this.getEmail() +
+                " | Address : " + this.getStreet() +
+                " " + this.getCity() +
+                " " + this.getProvince() +
+                " " + this.getPostalCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (id != customer.id) return false;
+        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
+        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
+        if (street != null ? !street.equals(customer.street) : customer.street != null) return false;
+        if (city != null ? !city.equals(customer.city) : customer.city != null) return false;
+        if (province != null ? !province.equals(customer.province) : customer.province != null) return false;
+        return postalCode != null ? postalCode.equals(customer.postalCode) : customer.postalCode == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (street != null ? street.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (province != null ? province.hashCode() : 0);
+        result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
+        return result;
     }
 }

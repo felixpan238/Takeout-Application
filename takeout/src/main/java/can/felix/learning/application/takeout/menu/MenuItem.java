@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.menu;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -39,31 +39,6 @@ public class MenuItem {
     // -Constructor ----------------------------------------------------------------------------------------------------
     public MenuItem (){}
 
-    public MenuItem (int id, String displayName, MenuCategory category, String description, BigDecimal price){
-        this.setId(id);
-        this.setDisplayName(displayName);
-        this.setCategory(category);
-        this.setDescription(description);
-        this.setPrice(price);
-    }
-
-    public MenuItem (String displayName, MenuCategory category, String description, BigDecimal price){
-        this.setDisplayName(displayName);
-        this.setCategory(category);
-        this.setDescription(description);
-        this.setPrice(price);
-    }
-
-    // -Override toString method ---------------------------------------------------------------------------------------
-    @Override
-    public String toString() {
-        return " ID: " + this.getId() +
-                " | Menu Item: " + this.getDisplayName() +
-                " | Category: " + this.getCategory() +
-                " | Description: " + this.getDescription() +
-                " | Price: $" + this.getPrice();
-    }
-
     // -Getters and Setters for variables  -----------------------------------------------------------------------------
     public int getId() {
         return this.id;
@@ -103,5 +78,42 @@ public class MenuItem {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+
+    // -Override default method ----------------------------------------------------------------------------------------
+    @Override
+    public String toString() {
+        return " ID: " + this.getId() +
+                " | Menu Item: " + this.getDisplayName() +
+                " | Category: " + this.getCategory() +
+                " | Description: " + this.getDescription() +
+                " | Price: $" + this.getPrice();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MenuItem menuItem = (MenuItem) o;
+
+        if (id != menuItem.id) return false;
+        if (displayName != null ? !displayName.equals(menuItem.displayName) : menuItem.displayName != null)
+            return false;
+        if (category != menuItem.category) return false;
+        if (description != null ? !description.equals(menuItem.description) : menuItem.description != null)
+            return false;
+        return price != null ? price.equals(menuItem.price) : menuItem.price == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (displayName != null ? displayName.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        return result;
     }
 }

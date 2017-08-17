@@ -1,9 +1,12 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -84,10 +87,13 @@ public class CustomerServiceImpl implements CustomerService {
 //        return fullList;
     }
 
-    public Customer getCustomerById(int id){
-        Customer customer;
-        customer = customerRepository.findOne(id);
-        return customer;
+    public Customer findById(Long id){
+        Optional<Customer> customer = customerRepository.findById(id.intValue());
+        if (customer.isPresent()){
+            return customer.get();
+        }else{
+            throw new ResourceNotFoundException("Customer " + id + " not found.");
+        }
 
 //
 //        Customer customer = null;
@@ -123,6 +129,10 @@ public class CustomerServiceImpl implements CustomerService {
 //        }
 //
 //        return customer;
+    }
+
+    public List<Customer> findByFirstName(String name){
+        return customerRepository.findByFirstNameStartsWith(name);
     }
 
     public void insertCustomer(Customer customer){

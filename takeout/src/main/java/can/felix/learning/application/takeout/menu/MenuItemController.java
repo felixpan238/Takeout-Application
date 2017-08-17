@@ -1,4 +1,4 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.menu;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +10,12 @@ import java.util.List;
     @Autowired
     private MenuItemService menuItemService;
 
-    @RequestMapping("/menu/full")
+    @RequestMapping(method= RequestMethod.GET, value="/menu/full")
     public List<MenuItem> getAllMenuItems() {
         return menuItemService.getAllMenuItems();
     }
 
-    @RequestMapping("/menu/{id}")
+    @RequestMapping(method= RequestMethod.GET, value="/menu/{id}")
     public MenuItem getMenuItem(@PathVariable int id) {
         return menuItemService.getMenuItemById(id);
     }

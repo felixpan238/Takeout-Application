@@ -1,9 +1,7 @@
-package can.felix.learning.application.takeout;
+package can.felix.learning.application.takeout.order;
 
-import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Service
 public interface OrderService {
     public List<Order> getAllOrders();
     public Order getOrderById(int id);
