@@ -2,6 +2,8 @@ package can.felix.learning.application.takeout.menu;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @RestController
@@ -11,9 +13,18 @@ import java.util.List;
     private MenuItemService menuItemService;
 
     @RequestMapping(method= RequestMethod.GET, value="/menu/full")
-    public List<MenuItem> getAllMenuItems() {
-        return menuItemService.getAllMenuItems();
+    public ModelAndView  getAllMenuItems() {
+    	List<MenuItem> list = menuItemService.getAllMenuItems();
+    	ModelAndView model = new ModelAndView("menuList");
+		model.addObject("lists", list);
+		return model;
+       
     }
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    public ModelAndView menuItem() {
+       return new ModelAndView("addMenuItem", "command", new MenuItem());
+    }
+    
 
     @RequestMapping(method= RequestMethod.GET, value="/menu/{id}")
     public MenuItem getMenuItem(@PathVariable int id) {
@@ -21,10 +32,17 @@ import java.util.List;
     }
 
     @RequestMapping(method= RequestMethod.POST, value="/menu/menuitem")
-    public void addMenuItem(@RequestBody MenuItem menuItem) {
+    public void addMenuItem(MenuItem menuItem) {
         menuItemService.insertMenuItem(menuItem);
     }
 
+      
+    @RequestMapping(method= RequestMethod.POST, value="/menu/new/menuitem")
+    public void insertMenuItem(@ModelAttribute("menuItem")MenuItem menuItem) {
+        menuItemService.insertMenuItem(menuItem);
+    }
+
+    
     @RequestMapping(method= RequestMethod.PUT, value="/menu/menuitem")
     public void updateMenuItem(@RequestBody MenuItem menuItem) {
         menuItemService.updateMenuItem(menuItem);

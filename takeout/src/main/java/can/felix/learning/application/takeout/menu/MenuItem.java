@@ -73,7 +73,7 @@ public class MenuItem {
     }
 
     public BigDecimal getPrice() {
-        return this.price.setScale(2, RoundingMode.HALF_EVEN);
+        return (price == null || price == BigDecimal.ZERO) ? BigDecimal.ZERO : this.price.setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public void setPrice(BigDecimal price) {
